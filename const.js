@@ -1,0 +1,1 @@
+export const SALONTYPES = [{key: "Negle"}, {key: "Frisør"}, {key: "Øjenvipper"}, {key: "Bryn"}, {key: "Massage"}];
