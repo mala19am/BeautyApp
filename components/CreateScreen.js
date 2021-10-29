@@ -12,25 +12,24 @@ const navController = (navigation, route) =>{
 
 
 /*
- * DetailsScreen tager 'navigation' med som argument. navigation er en automatisk prædefineret prop, der kan refereres til i alle screen komponenter.
+ * CreateScreen tager 'navigation' med som argument. navigation er en automatisk prædefineret prop, der kan refereres til i alle screen komponenter.
  *Se dokumentationen for mere info: https://reactnavigation.org/docs/navigation-prop/
  *
- *Derudover styles DetailsScreen, som indeholder omfatter to button komponenter, der benytters til at aktivere vores navController metode
+ *Derudover styles CreateScreen, som indeholder omfatter to button komponenter, der benytters til at aktivere vores navController metode
  */
-function DetailsScreen({navigation}) {
+function CreateScreen({navigation}) {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>DetailsScreen!</Text>
-            <Button title="Go To Screen One" onPress={() => navController(navigation, 'ScreenOne')}  />
-            <Button title="Go To Screen Two" onPress={() => navController(navigation, 'ScreenTwo')}  />
+            <Text style={styles.text}>Opret salon!</Text>
+            <Button title="Tryk for at oprette en salon" onPress={() => navController(navigation, 'ScreenOne')}  />
         </View>
     );
 }
 
-export default DetailsScreen
+export default CreateScreen
 
 
-//Lokal styling til brug i DetailsScreen.
+//Lokal styling til brug i CreateScreen.
 const styles = StyleSheet.create({
     container: {
         paddingTop:100,

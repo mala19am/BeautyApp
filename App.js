@@ -11,7 +11,6 @@ import {createStackNavigator} from "@react-navigation/stack";
 
 import negle from "./components/salonTypeComponents/negle";
 
-//test test
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";

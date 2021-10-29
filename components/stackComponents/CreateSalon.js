@@ -4,7 +4,7 @@ import * as React from "react";
 import firebase from "firebase";
 import {useEffect, useState} from "react";
 
-function ScreenOne({ navigation, route}) {
+function CreateSalon({ navigation, route}) {
 
     const initialState = {
         name: '',
@@ -70,10 +70,10 @@ function ScreenOne({ navigation, route}) {
     );
 }
 //Eksport af Screen således den kan importeres- og bruges i andres komponenter
-export default ScreenOne
+export default CreateSalon
 
 
-//Lokal styling til brug i ScreenOne
+//Lokal styling til brug i CreateSalon
 const styles = StyleSheet.create({
     container: {
         borderColor: 'red',

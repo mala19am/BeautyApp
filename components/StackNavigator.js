@@ -1,7 +1,7 @@
 import * as React from "react";
-import ScreenOne from "./stackComponents/ScreenOne";
+import CreateSalon from "./stackComponents/CreateSalon";
 import ScreenTwo from "./stackComponents/ScreenTwo";
-import DetailsScreen from "./DetailsScreen";
+import CreateScreen from "./CreateScreen";
 import { createStackNavigator } from '@react-navigation/stack';
 
 
@@ -13,14 +13,14 @@ function StackNavigator() {
         <Stack.Navigator
             initialRouteName="Details"
         >
-            <Stack.Screen name="Details" component={DetailsScreen}
+            <Stack.Screen name="Details" component={CreateScreen}
                           options={{
                               headerTitleAlign: 'center',
                               headerTitleStyle: {color: 'white'},
                               headerStyle: {backgroundColor: '#ba6262'}}
                           }
             />
-            <Stack.Screen name="ScreenOne" component={ScreenOne} options={{
+            <Stack.Screen name="ScreenOne" component={CreateSalon} options={{
                 headerTitleStyle: { textAlign: 'right', color: 'white' },
                 headerStyle: {backgroundColor: '#62bab5'}
             }} />

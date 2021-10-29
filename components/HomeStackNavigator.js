@@ -1,5 +1,7 @@
 import * as React from "react";
 import negle from "./salonTypeComponents/negle";
+import Frisør from "./salonTypeComponents/Frisør";
+import SalonDetails from "./SalonDetails";
 
 import HomeScreen from "./HomeScreen";
 import { createStackNavigator } from '@react-navigation/stack';
@@ -24,6 +26,11 @@ function HomeStackNavigator() {
                 headerTitleStyle: { textAlign: 'right', color: 'white' },
                 headerStyle: {backgroundColor: '#62bab5'}
             }} />
+            <Stack.Screen name="Frisør" component={Frisør} options={{
+                headerTitleStyle: { textAlign: 'right', color: 'white' },
+                headerStyle: {backgroundColor: '#62bab5'}
+            }} />
+            <Stack.Screen name={'Salon Details'} component={SalonDetails}/>
         </Stack.Navigator>
     )
 }

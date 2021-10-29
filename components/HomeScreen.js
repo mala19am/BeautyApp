@@ -17,6 +17,7 @@ function HomeScreen({navigation}) {
         <View style={styles.container}>
             <Text style={styles.text}>Home Screen!</Text>
             <Button title="Negle" onPress={() => navController(navigation, 'Negle')}  />
+            <Button title="Frisør" onPress={() => navController(navigation, 'Frisør')}  />
         </View>
     );
 }

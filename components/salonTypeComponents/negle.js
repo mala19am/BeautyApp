@@ -4,7 +4,7 @@ import firebase from "firebase";
 import {useEffect, useState} from "react";
 
 //HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
-const HomeScreen = ({navigation}) => {
+const Negle = ({navigation}) => {
     const [salons,setSalons] = useState()
 
     useEffect(() => {
@@ -58,7 +58,7 @@ const HomeScreen = ({navigation}) => {
     );
 }
 
-export default HomeScreen
+export default Negle
 
 //Lokal styling til brug i HomeScreen
 const styles = StyleSheet.create({

@@ -1,7 +1,7 @@
 import {Button, StyleSheet, Text, View} from "react-native";
 import * as React from "react";
 
-//Identisk med ScreenOne
+//Identisk med CreateSalon
 
 /*
 *ScreenTwo er den ene af de tre screens i StackNavigatoren
