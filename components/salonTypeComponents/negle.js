@@ -12,6 +12,7 @@ const Negle = ({navigation}) => {
             firebase
                 .database()
                 .ref('/BeautyMMJR')
+                .orderByChild("type").equalTo("Negle")
                 .on('value', snapshot => {
                     setSalons(snapshot.val())
                 });
@@ -19,7 +20,7 @@ const Negle = ({navigation}) => {
     },[]);
 
     if (!salons) {
-        return <Text>Intet at vise...</Text>
+        return <Text>Loading...</Text>
     }
 
     const handleSelectSalon = id => {
@@ -36,15 +37,16 @@ const Negle = ({navigation}) => {
         for(let i = 0, l = salonArray.length; i < l; i++){
 
             if(salonArray[i].type === type){
-                data.push(salonArray[i])
+                data.push(salonArray[i]);
             }
         }
+        console.log(data)
         return data;
     }
 
     return (
         <FlatList
-            data={salonTypeSelector("Ciao")}
+            data={salonArray}
             keyExtractor={(item, index) => salonKeys[index]}
             renderItem={({ item, index }) => {
                 return(
