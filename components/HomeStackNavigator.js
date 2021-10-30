@@ -1,6 +1,9 @@
 import * as React from "react";
 import negle from "./salonTypeComponents/negle";
 import Frisør from "./salonTypeComponents/Frisør";
+import Øjenvipper from "./salonTypeComponents/Øjenvipper";
+import Bryn from "./salonTypeComponents/Bryn";
+import Massage from "./salonTypeComponents/Massage";
 import SalonDetails from "./SalonDetails";
 
 import HomeScreen from "./HomeScreen";
@@ -25,6 +28,9 @@ function HomeStackNavigator() {
             />
             <Stack.Screen name="Negle" component={negle}/>
             <Stack.Screen name="Frisør" component={Frisør}/>
+            <Stack.Screen name="Bryn" component={Bryn}/>
+            <Stack.Screen name="Øjenvipper" component={Øjenvipper}/>
+            <Stack.Screen name="Massage" component={Massage}/>
             <Stack.Screen name='SalonDetails' component={SalonDetails}/>
         </Stack.Navigator>
     )

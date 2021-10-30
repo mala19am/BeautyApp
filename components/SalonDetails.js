@@ -1,23 +1,25 @@
 import * as React from 'react';
-import {View, Text, Platform, FlatList, StyleSheet, Button, Alert, TouchableOpacity, Image} from 'react-native';
+import {View, Text, Platform, FlatList, StyleSheet,
+        Button, Alert, TouchableOpacity, Image, StatusBar,
+        } from 'react-native';
 import firebase from 'firebase';
 import {useEffect, useState} from "react";
+import CalendarPicker from "./CalendarPicker";
 import {SALONTYPES} from "../const";
+import GlobalStyles from "../globalStyling/GlobalStyles";
 
 const SalonDetails = ({route,navigation}) => {
-    const [salons,setSalons] = useState()
+    const [salon,setSalon] = useState()
 
     useEffect(() => {
-        if(!salons) {
-            firebase
-                .database()
-                .ref('/BeautyMMJR')
-                .orderByChild("type").equalTo()
-                .on('value', snapshot => {
-                    setSalons(snapshot.val())
-                });
+        console.log(route);
+        setSalon(route.params.salon[1]);
+
+        /*Når vi forlader screen, tøm object*/
+        return () => {
+            setSalon({})
         }
-    },[]);
+    });
 
 
 
@@ -32,22 +34,22 @@ const SalonDetails = ({route,navigation}) => {
     //all content
     return (
         <View style={styles.container}>
-            <FlatList
-                style={styles.contentList}
-                columnWrapperStyle={styles.listContainer}
-                data={salon}
-                keyExtractor= {(item) => {
-                    return item.id;
-                }}
-                renderItem={({item}) => {
-                    return (
-                        <TouchableOpacity style={styles.card} onPress={() => navController(navigation, 'SalonDetails')}>
-                            <Image style={styles.image} source={item.image}/>
-                            <View style={styles.cardContent}>
-                                <Text style={styles.name}>{item.key}</Text>
-                            </View>
-                        </TouchableOpacity>
-                    )}}/>
+            {
+                Object.entries(salon).map((item,index)=>{
+                    return(
+                        <View style={styles.row} key={index}>
+                            <Text style={styles.label}>{item[0]} </Text>
+                            <Text style={styles.value}>{item[1]}</Text>
+                        </View>
+                    )
+                })
+            }
+            <View>
+                <CalendarPicker/>
+                <TouchableOpacity style={GlobalStyles.buttonContainer}>
+                    <Text style={styles.buttonText}>Book tid</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }
@@ -56,12 +58,9 @@ const SalonDetails = ({route,navigation}) => {
 export default SalonDetails;
 
 const styles = StyleSheet.create({
-    container: { flex: 1, justifyContent: 'flex-start' },
-    row: {
-        margin: 5,
-        padding: 5,
-        flexDirection: 'row',
+    container: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+        marginTop: 100,
     },
-    label: { width: 100, fontWeight: 'bold' },
-    value: { flex: 1 },
 });

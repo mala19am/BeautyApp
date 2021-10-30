@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import GlobalStyles from "../../globalStyling/GlobalStyles"
 
 //HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
-const Frisør = ({navigation}) => {
+const Bryn = ({navigation}) => {
     const [salons,setSalons] = useState()
 
     useEffect(() => {
@@ -13,7 +13,7 @@ const Frisør = ({navigation}) => {
             firebase
                 .database()
                 .ref('/BeautyMMJR')
-                .orderByChild("type").equalTo("Frisør")
+                .orderByChild("type").equalTo("Bryn")
                 .on('value', snapshot => {
                     setSalons(snapshot.val())
                 });
@@ -52,8 +52,8 @@ const Frisør = ({navigation}) => {
             renderItem={({ item, index }) => {
                 return(
                     <TouchableOpacity style={GlobalStyles.card} onPress={() => handleSelectSalon(salonKeys[index])}>
-                        <Text style={GlobalStyles.salonName}>{item.name}</Text>
-                        <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
+                        <Text style={GlobalStyles.name}>{item.name}</Text>
+                        <Text style={GlobalStyles.address}>{item.address}</Text>
                     </TouchableOpacity>
                 )
             }}
@@ -61,4 +61,19 @@ const Frisør = ({navigation}) => {
     );
 }
 
-export default Frisør
+export default Bryn
+
+//Lokal styling til brug i HomeScreen
+const styles = StyleSheet.create({
+    container: {
+        borderColor: 'red',
+        borderWidth: 20,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+    },
+    text: {
+        fontSize: 20,
+    },
+});
