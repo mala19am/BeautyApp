@@ -34,22 +34,21 @@ const SalonDetails = ({route,navigation}) => {
     //all content
     return (
         <View style={styles.container}>
-            {
-                Object.entries(salon).map((item,index)=>{
-                    return(
-                        <View style={styles.row} key={index}>
-                            <Text style={styles.label}>{item[0]} </Text>
-                            <Text style={styles.value}>{item[1]}</Text>
+                        <View style={styles.row}>
+                            <Text style={styles.value}>{salon["name"]}</Text>
+                            <Text style={styles.value}>{salon["address"]}</Text>
                         </View>
-                    )
-                })
-            }
-            <View>
+
+            <View style={styles.calenderContainer}>
                 <CalendarPicker/>
+            </View>
+
+            <View style={styles.bodyContent}>
                 <TouchableOpacity style={GlobalStyles.buttonContainer}>
-                    <Text style={styles.buttonText}>Book tid</Text>
+                    <Text style={GlobalStyles.buttonText}>Book tid</Text>
                 </TouchableOpacity>
             </View>
+
         </View>
     );
 }
@@ -61,6 +60,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
+    },
+    calenderContainer: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+    },
+    bodyContent: {
+        flex: 1,
+        alignItems: 'center',
+        padding:30,
         marginTop: 100,
     },
 });

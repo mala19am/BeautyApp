@@ -4,6 +4,7 @@ import {
     Text,
     View,
     Button,
+    SafeAreaView,
 } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
 
@@ -13,8 +14,6 @@ export default class CalenderPicker extends Component {
         this.state = {
             selectedStartDate: null,
         }
-        this.state = {isHidden: false};
-        this.onPress = this.onPress.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
     }
 
@@ -24,18 +23,11 @@ export default class CalenderPicker extends Component {
         });
     }
 
-    onPress() {
-        this.setState({isHidden: !this.state.isHidden})
-    }
-
     render() {
         const { selectedStartDate } = this.state;
         const startDate = selectedStartDate ? selectedStartDate.toString() : '';
         return (
-            <View style={styles.container}>
-
-                {this.state.isHidden ? <CalenderPicker/> : null}
-                <Button title={this.state.isHidden ? "SHOW" : "HIDE"} onPress={this.onPress} />
+            <SafeAreaView style={styles.container}>
 
                 <CalendarPicker
                     onDateChange={this.onDateChange}
@@ -43,7 +35,7 @@ export default class CalenderPicker extends Component {
                 <View>
                     <Text>VALGTE DATO:{ startDate }</Text>
                 </View>
-            </View>
+            </SafeAreaView>
         );
     }
 }
@@ -52,6 +44,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        marginTop: 100,
     },
 });

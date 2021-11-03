@@ -63,6 +63,11 @@ const GlobalStyles = StyleSheet.create({
         borderRadius:30,
         backgroundColor: "#D22D2D"
     },
+    buttonText:{
+        fontSize:14,
+        color: "#FFFFFF",
+        fontWeight: "600"
+    },
 });
 
 export default GlobalStyles
