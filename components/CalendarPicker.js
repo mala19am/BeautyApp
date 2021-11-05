@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import {
     StyleSheet,
     Text,
@@ -7,6 +7,31 @@ import {
     SafeAreaView,
 } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
+
+
+const CalenderPicker = (props) => {
+
+    const [selectedStartDate, setSelectedStartDate] = useState(null)
+
+
+    const startDate = selectedStartDate ? selectedStartDate.toString() : '';
+    return(
+        <SafeAreaView style={styles.container}>
+            <CalendarPicker
+                onDateChange={( date ) => setSelectedStartDate}
+            />
+            <View>
+                <Text>VALGTE DATO:{ startDate }</Text>
+            </View>
+
+            <Button title={'hejsa'} onPress={() => onChange()}/>
+        </SafeAreaView>
+    )
+}
+
+export default CalenderPicker
+
+/*
 
 export default class CalenderPicker extends Component {
     constructor(props) {
@@ -38,7 +63,7 @@ export default class CalenderPicker extends Component {
             </SafeAreaView>
         );
     }
-}
+}*/
 
 const styles = StyleSheet.create({
     container: {

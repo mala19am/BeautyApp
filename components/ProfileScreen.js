@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     StyleSheet,
     Text,
@@ -9,10 +9,8 @@ import {
 } from 'react-native';
 import firebase from "firebase";
 
-function LogOut() {
-}
+const ProfileScreen = () => {
 
-function ProfileScreen () {
 
     //handleLogout håndterer log ud af en aktiv bruger.
     //Metoden er en prædefineret metode, som firebase stiller tilrådighed
@@ -33,7 +31,7 @@ function ProfileScreen () {
                 <Image style={styles.picture} source={require("../image/profilePicture.jpg")}/>
                 <View style={styles.body}>
                     <View style={styles.bodyContent}>
-                        <Text style={styles.name}>{firebase.auth().currentUser.email}</Text>
+                        <Text style={styles.name}>Magnus</Text>
 
                         <TouchableOpacity style={styles.buttonContainer}>
                             <Text style={styles.buttonText}>Se bookinger</Text>
