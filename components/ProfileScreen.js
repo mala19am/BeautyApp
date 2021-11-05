@@ -9,7 +9,15 @@ import {
 } from 'react-native';
 import firebase from "firebase";
 
-const ProfileScreen = () => {
+
+
+
+
+const navController = (navigation, route) =>{
+    navigation.navigate(route)
+}
+
+const ProfileScreen = ({navigation}) => {
 
 
     //handleLogout håndterer log ud af en aktiv bruger.
@@ -33,7 +41,7 @@ const ProfileScreen = () => {
                     <View style={styles.bodyContent}>
                         <Text style={styles.name}>Magnus</Text>
 
-                        <TouchableOpacity style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navController(navigation, "BookingScreen")}>
                             <Text style={styles.buttonText}>Se bookinger</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonContainer} onPress={() => handleLogOut()}>

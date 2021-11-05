@@ -5,8 +5,6 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 import {useEffect, useState} from "react";
-
-import {SALONTYPES} from "../const";
 import GlobalStyles from "../globalStyling/GlobalStyles";
 import CalendarPicker from 'react-native-calendar-picker';
 
@@ -36,20 +34,18 @@ const SalonDetails = ({route,navigation}) => {
     }
 
 
-
-    const saveBooking = () => {
+    const handleSave = () => {
         const booking = {
             mail: firebase.auth().currentUser.email,
             salon: salon["name"],
             date: selectedDate.toString()
         }
 
-
             firebase
                 .database()
                 .ref('/Bookings/')
-                .push(booking)
-        }
+                .push(booking);
+            Alert.alert("Booking gemt.")
     }
     //Gem booking til profil
 
@@ -75,7 +71,7 @@ const SalonDetails = ({route,navigation}) => {
                 </View>
 
                 <View style={styles.bodyContent}>
-                    <TouchableOpacity style={GlobalStyles.buttonContainer}>
+                    <TouchableOpacity style={GlobalStyles.buttonContainer} onPress={() => handleSave()}>
                         <Text style={GlobalStyles.buttonText}>Book tid</Text>
                     </TouchableOpacity>
                 </View>

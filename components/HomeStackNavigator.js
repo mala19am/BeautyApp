@@ -5,6 +5,8 @@ import Øjenvipper from "./salonTypeComponents/Øjenvipper";
 import Bryn from "./salonTypeComponents/Bryn";
 import Massage from "./salonTypeComponents/Massage";
 import SalonDetails from "./SalonDetails";
+import BookingScreen from "./BookingsScreen";
+import ProfileScreen from "./ProfileScreen";
 
 import HomeScreen from "./HomeScreen";
 import { createStackNavigator } from '@react-navigation/stack';
@@ -32,6 +34,8 @@ function HomeStackNavigator() {
             <Stack.Screen name="Øjenvipper" component={Øjenvipper}/>
             <Stack.Screen name="Massage" component={Massage}/>
             <Stack.Screen name='SalonDetails' component={SalonDetails}/>
+            <Stack.Screen name='BookingScreen' component={BookingScreen}/>
+            <Stack.Screen name='ProfileScreen' component={ProfileScreen}/>
         </Stack.Navigator>
     )
 }
