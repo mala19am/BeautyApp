@@ -43,7 +43,7 @@ function BookingScreen({navigation}) {
                                     <Text style={GlobalStyles.salonName}>Hos:</Text>
                                     <Text style={GlobalStyles.address}>{item.salon}</Text>
                                 </TouchableOpacity>
-                                <View style={{width: '100%', height:50, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', top: '15%'}}>
+                                <View style={{width: '100%', height:50, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                                     <TouchableOpacity style={GlobalStyles.buttonContainerDelete}>
                                         <Text style={GlobalStyles.buttonText}>Slet booking</Text>
                                     </TouchableOpacity>
