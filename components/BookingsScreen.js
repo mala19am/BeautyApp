@@ -43,14 +43,14 @@ function BookingScreen({navigation}) {
                                     <Text style={GlobalStyles.salonName}>Hos:</Text>
                                     <Text style={GlobalStyles.address}>{item.salon}</Text>
                                 </TouchableOpacity>
-                                <SafeAreaView style={{width: '100%', height:50, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', top: '15%'}}>
+                                <View style={{width: '100%', height:50, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', top: '15%'}}>
                                     <TouchableOpacity style={GlobalStyles.buttonContainerDelete}>
                                         <Text style={GlobalStyles.buttonText}>Slet booking</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={GlobalStyles.buttonContainerDelete}>
                                         <Text style={GlobalStyles.buttonText}>Redigér booking</Text>
                                     </TouchableOpacity>
-                                </SafeAreaView>
+                                </View>
                             </View>
                         )
                     }}
