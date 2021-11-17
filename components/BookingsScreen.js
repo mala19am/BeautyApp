@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, FlatList, TouchableOpacity,
-    TouchableHighlight, Button, Image, Dimensions, Alert, ScrollView} from "react-native";
+    TouchableHighlight, Button, Image, Dimensions, Alert, ScrollView, SafeAreaView} from "react-native";
 import * as React from "react";
 import {useEffect, useState} from "react";
 import firebase from "firebase";
@@ -36,13 +36,22 @@ function BookingScreen({navigation}) {
                     data={bookingArray}
                     renderItem={({ item }) => {
                         return(
-                            <TouchableOpacity style={GlobalStyles.card}>
-                                <Text style={GlobalStyles.salonName}>Dato:</Text>
-                                <Text style={GlobalStyles.address}>{item.date}</Text>
-
-                                <Text style={GlobalStyles.salonName}>Hos:</Text>
-                                <Text style={GlobalStyles.address}>{item.salon}</Text>
-                            </TouchableOpacity>
+                            <View style={GlobalStyles.card}>
+                                <TouchableOpacity>
+                                    <Text style={GlobalStyles.salonName}>Dato:</Text>
+                                    <Text style={GlobalStyles.address}>{item.date}</Text>
+                                    <Text style={GlobalStyles.salonName}>Hos:</Text>
+                                    <Text style={GlobalStyles.address}>{item.salon}</Text>
+                                </TouchableOpacity>
+                                <SafeAreaView style={{width: '100%', height:50, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', top: '15%'}}>
+                                    <TouchableOpacity style={GlobalStyles.buttonContainerDelete}>
+                                        <Text style={GlobalStyles.buttonText}>Slet booking</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={GlobalStyles.buttonContainerDelete}>
+                                        <Text style={GlobalStyles.buttonText}>Redigér booking</Text>
+                                    </TouchableOpacity>
+                                </SafeAreaView>
+                            </View>
                         )
                     }}
                  />

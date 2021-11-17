@@ -1,5 +1,7 @@
 import {Button, StyleSheet, Text, View} from "react-native";
 import * as React from "react";
+import GlobalStyles from "../globalStyling/GlobalStyles";
+
 
 /*
 * Metode til at navigere på baggrund af de argumenter, som der sendes med i metode
@@ -19,30 +21,13 @@ const navController = (navigation, route) =>{
  */
 function CreateScreen({navigation}) {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Opret salon!</Text>
-            <Button title="Tryk for at oprette en salon" onPress={() => navController(navigation, 'ScreenOne')}  />
+        <View style={GlobalStyles.containerCreateSalon}>
+            <Text style={GlobalStyles.textCreateSalon}>Opret en ny salon</Text>
+            <Button style={GlobalStyles.buttonCreateSalon} title="Tryk for at oprette en salon" onPress={() => navController(navigation, 'ScreenOne')}>
+                    <Text style={GlobalStyles.buttonText}>Se bookinger</Text>
+            </Button>
         </View>
     );
 }
 
 export default CreateScreen
-
-
-//Lokal styling til brug i CreateScreen.
-const styles = StyleSheet.create({
-    container: {
-        paddingTop:100,
-        paddingBottom:100,
-        borderColor: 'green',
-        borderWidth: 20,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        height:'100%'
-    },
-    text: {
-        fontSize: 20,
-    },
-});

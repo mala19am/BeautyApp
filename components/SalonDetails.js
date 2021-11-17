@@ -39,7 +39,7 @@ const SalonDetails = ({route,navigation}) => {
         const booking = {
             mail: firebase.auth().currentUser.email,
             salon: salon["name"],
-            date: selectedDate.toString()
+            date: selectedDate.toString().slice(0,15)
         }
 
             firebase
@@ -58,9 +58,9 @@ const SalonDetails = ({route,navigation}) => {
 
     return (
         <View style={styles.container}>
-                        <View style={styles.row}>
-                            <Text style={styles.value}>{salon["name"]}</Text>
-                            <Text style={styles.value}>{salon["address"]}</Text>
+                        <View style={GlobalStyles.row}>
+                            <Text style={GlobalStyles.textSalons}>{salon["name"]}</Text>
+                            <Text style={GlobalStyles.textSalons}>{salon["address"]}</Text>
                         </View>
 
             <SafeAreaView style={styles.container}>
@@ -97,6 +97,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         padding:30,
-        marginTop: 100,
+        marginTop:5,
     },
 });
