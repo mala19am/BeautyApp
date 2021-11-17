@@ -1,14 +1,14 @@
 import * as React from "react";
-import negle from "./salonTypeComponents/negle";
-import Frisør from "./salonTypeComponents/Frisør";
-import Øjenvipper from "./salonTypeComponents/Øjenvipper";
-import Bryn from "./salonTypeComponents/Bryn";
-import Massage from "./salonTypeComponents/Massage";
-import SalonDetails from "./SalonDetails";
-import BookingScreen from "./BookingsScreen";
-import ProfileScreen from "./ProfileScreen";
+import negle from "../salonTypeComponents/negle";
+import Frisør from "../salonTypeComponents/Frisør";
+import Øjenvipper from "../salonTypeComponents/Øjenvipper";
+import Bryn from "../salonTypeComponents/Bryn";
+import Massage from "../salonTypeComponents/Massage";
+import SalonDetails from "../SalonDetails";
+import BookingScreen from "../BookingsScreen";
+import ProfileScreen from "../ProfileScreen";
 
-import HomeScreen from "./HomeScreen";
+import HomeScreen from "../HomeScreen";
 import { createStackNavigator } from '@react-navigation/stack';
 import {StyleSheet} from "react-native";
 

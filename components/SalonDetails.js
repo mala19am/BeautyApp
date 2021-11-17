@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import {useEffect, useState} from "react";
 import GlobalStyles from "../globalStyling/GlobalStyles";
 import CalendarPicker from 'react-native-calendar-picker';
+//import Rating from 'react-native-ratings';
 
 
 const SalonDetails = ({route,navigation}) => {

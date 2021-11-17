@@ -9,10 +9,6 @@ import {
 } from 'react-native';
 import firebase from "firebase";
 
-
-
-
-
 const navController = (navigation, route) =>{
     navigation.navigate(route)
 }

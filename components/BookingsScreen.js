@@ -4,8 +4,7 @@ import * as React from "react";
 import {useEffect, useState} from "react";
 import firebase from "firebase";
 import { createStackNavigator } from '@react-navigation/stack';
-import StackNavigator from "@react-navigation/stack/src/navigators/createStackNavigator";
-
+import GlobalStyles from "../globalStyling/GlobalStyles";
 
 const Stack = createStackNavigator();
 
@@ -25,31 +24,28 @@ function BookingScreen({navigation}) {
         }
     },[]);
 
-    if (!salons) {
+    if (!bookings) {
         return <Text>Du har ingen bookings</Text>
     }
 
+    const bookingArray = Object.values(bookings)
 
     return (
-        <Stack.Navigator
-
-            >
-            <View style={styles.container}>
+            <View style={GlobalStyles.container}>
                 <FlatList
-                    style={styles.contentList}
-                    columnWrapperStyle={styles.listContainer}
-                    keyExtractor= {(item) => {
-                        return item.id;
-                    }}
-                    renderItem={({item}) => {
-                        return (
-                            <TouchableOpacity style={styles.card}>
-                                <Image style={styles.image} source={item.image}/>
-                                <View style={styles.cardContent}>
-                                    <Text style={styles.name}>{item.key}</Text>
-                                </View>
+                    data={bookingArray}
+                    renderItem={({ item }) => {
+                        return(
+                            <TouchableOpacity style={GlobalStyles.card}>
+                                <Text style={GlobalStyles.salonName}>Dato:</Text>
+                                <Text style={GlobalStyles.address}>{item.date}</Text>
+
+                                <Text style={GlobalStyles.salonName}>Hos:</Text>
+                                <Text style={GlobalStyles.address}>{item.salon}</Text>
                             </TouchableOpacity>
-                        )}}/>
+                        )
+                    }}
+                 />
             </View>
         );
     }

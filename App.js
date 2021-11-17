@@ -6,8 +6,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from "./components/HomeScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import HomeStackNavigator from "./components/HomeStackNavigator";
-import StackNavigator from "./components/StackNavigator";
+import HomeStackNavigator from "./components/StackNavigators/HomeStackNavigator";
+import StackNavigator from "./components/StackNavigators/StackNavigator";
+import ProfileStackNavigator from "./components/StackNavigators/ProfileStackNavigator";
 import firebase from "firebase";
 import {createStackNavigator} from "@react-navigation/stack";
 import LoginForm from "./components/LoginForm";
@@ -95,20 +96,12 @@ function App() {
     }
 
 
-    const StackNavigation = () => {
-        return(
-            <StackNavigation>
-                <Stack.Screen name='Negle' component={negle}/>
-            </StackNavigation>
-
-        )
-    }
 
   return user.loggedIn ?
       <NavigationContainer>
         <Tab.Navigator screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
-            if (route.name === 'Home') {
+            if (route.name === 'Kategorier') {
               return (
                   <Ionicons
                       name={'home-outline'}
@@ -141,8 +134,8 @@ function App() {
                          inactiveTintColor: 'gray',
                        }}
         >
-          <Tab.Screen name="Profile" component={ProfileScreen} />
-          <Tab.Screen name="Home" component={HomeStackNavigator} />
+          <Tab.Screen name="Profile" component={ProfileStackNavigator} />
+          <Tab.Screen name="Kategorier" component={HomeStackNavigator} />
           <Tab.Screen name="Stack" component={StackNavigator} />
         </Tab.Navigator>
       </NavigationContainer> : <GuestPage/> ;
