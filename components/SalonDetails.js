@@ -7,7 +7,7 @@ import firebase from 'firebase';
 import {useEffect, useState} from "react";
 import GlobalStyles from "../globalStyling/GlobalStyles";
 import CalendarPicker from 'react-native-calendar-picker';
-//import Rating from 'react-native-ratings';
+import { Rating } from 'react-native-ratings';
 
 
 const SalonDetails = ({route,navigation}) => {
@@ -68,7 +68,12 @@ const SalonDetails = ({route,navigation}) => {
                     onDateChange={ onDateChange}
                 />
                 <View>
-                    <Text>{selectedDate.toString()}</Text>
+                    <Rating
+                        type='star'
+                        ratingCount={5}
+                        imageSize={40}
+                    />
+                    <Button title={"Rate"}/>
                 </View>
 
                 <View style={styles.bodyContent}>
@@ -96,7 +101,7 @@ const styles = StyleSheet.create({
     bodyContent: {
         flex: 1,
         alignItems: 'center',
-        padding:30,
+        padding:20,
         marginTop: 100,
     },
 });

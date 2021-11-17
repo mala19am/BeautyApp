@@ -14,6 +14,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Profile from "./components/ProfileScreen";
+import {ADMINS} from "./const"
 
 import negle from "./components/salonTypeComponents/negle";
 
@@ -96,7 +97,6 @@ function App() {
     }
 
 
-
   return user.loggedIn ?
       <NavigationContainer>
         <Tab.Navigator screenOptions={({ route }) => ({
@@ -104,7 +104,7 @@ function App() {
             if (route.name === 'Kategorier') {
               return (
                   <Ionicons
-                      name={'home-outline'}
+                      name={'earth-outline'}
                       size={size}
                       color={color}
                   />
@@ -136,9 +136,14 @@ function App() {
         >
           <Tab.Screen name="Profile" component={ProfileStackNavigator} />
           <Tab.Screen name="Kategorier" component={HomeStackNavigator} />
-          <Tab.Screen name="Stack" component={StackNavigator} />
+            {
+                ADMINS.includes(firebase.auth().currentUser.email)
+                    && <Tab.Screen name="Stack" component={StackNavigator} />
+            }
         </Tab.Navigator>
       </NavigationContainer> : <GuestPage/> ;
+
+
 
 }
 
