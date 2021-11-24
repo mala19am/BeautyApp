@@ -5,7 +5,9 @@ import {useEffect, useState} from "react";
 import GlobalStyles from "../../globalStyling/GlobalStyles"
 import { Rating } from 'react-native-ratings'
 
-const dollarSign = require ('../../image/dollar-symbol.png')
+const dollarSign = require ('../../image/dollarSignFinal.png')
+
+let RandomNumber = Math.floor(Math.random() * 5) + 1 ;
 
 //HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
 const Negle = ({navigation}) => {
@@ -61,10 +63,20 @@ const Negle = ({navigation}) => {
                             <Rating
                                 type='custom'
                                 ratingImage={ dollarSign }
-                                ratingCount={3}
-                                imageSize={30}
+                                startingValue={ item.priceRange}
+                                imageSize={20}
                                 readonly={true}
+                                ratingColor= {'#378805'}
                             />
+                            <View>
+                                <Rating
+                                    type='star'
+                                    ratingCount={5}
+                                    imageSize={20}
+                                    isDisabled = { true }
+                                    startingValue= { RandomNumber }
+                                />
+                            </View>
                         </TouchableOpacity>
                     </View>
                 )
