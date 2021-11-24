@@ -18,8 +18,7 @@ const GlobalStyles = StyleSheet.create({
         borderWidth:2,
         borderColor:"#ebf0f7"
     },
-
-    card:{
+    cardSalons:{
         flex: 1,
         alignSelf: 'center',
         marginLeft: 20,
@@ -29,22 +28,34 @@ const GlobalStyles = StyleSheet.create({
         padding: 10,
         borderRadius:30,
         width: '90%',
-        height: '60%'
+        height: '60%',
+        flexDirection: "row",
     },
-
+    cardBooking:{
+        flex: 1,
+        alignSelf: 'center',
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop:15,
+        backgroundColor:"white",
+        padding: 10,
+        borderRadius:30,
+        width: '90%',
+        height: '60%',
+    },
     name:{
         fontSize:24,
         flex:1,
         marginLeft: 10,
         color:"#D22D2D",
-        fontWeight:'bold'
+        fontWeight:'bold',
     },
     salonName:{
         fontSize:18,
         marginLeft: 10,
         flex:1,
         color:"#D22D2D",
-        fontWeight:'bold'
+        fontWeight:'bold',
     },
     address: {
         fontSize: 14,
@@ -53,6 +64,16 @@ const GlobalStyles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10,
         marginBottom: 10,
+    },
+    rating: {
+        flex:1,
+        marginTop: 10,
+
+    },
+    dollarRating: {
+        flex:1,
+        marginTop: 10,
+
     },
     buttonContainer: {
         marginTop:5,

@@ -9,10 +9,15 @@ import { Rating } from "react-native-ratings"
 
 const Stack = createStackNavigator();
 
+function getRandomNumber() {
+    let RandomNumber = Math.floor(Math.random()* 5) + 1;
+    return RandomNumber;
+}
+
+
 
 function BookingScreen({navigation}) {
     const [bookings,setBookings] = useState()
-    let RandomNumber = Math.floor(Math.random() * 5) + 1 ;
 
 
     useEffect(() => {
@@ -39,7 +44,7 @@ function BookingScreen({navigation}) {
                     data={bookingArray}
                     renderItem={({ item }) => {
                         return(
-                            <View style={GlobalStyles.card}>
+                            <View style={GlobalStyles.cardBooking}>
                                 <TouchableOpacity>
                                     <Text style={GlobalStyles.salonName}>Dato:</Text>
                                     <Text style={GlobalStyles.address}>{item.date}</Text>
@@ -58,9 +63,9 @@ function BookingScreen({navigation}) {
                                     <Rating
                                         type='star'
                                         ratingCount={5}
-                                        imageSize={40}
-                                        isDisabled = { true }
-                                        startingValue= { RandomNumber }
+                                        imageSize={30}
+                                        readonly= { true }
+                                        startingValue= { getRandomNumber() }
                                     />
                                 </View>
                             </View>

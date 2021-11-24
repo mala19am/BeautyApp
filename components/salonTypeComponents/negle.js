@@ -57,25 +57,29 @@ const Negle = ({navigation}) => {
             renderItem={({ item, index }) => {
                 return(
                     <View>
-                        <TouchableOpacity style={GlobalStyles.card} onPress={() => handleSelectSalon(salonKeys[index])}>
-                            <Text style={GlobalStyles.name}>{item.name}</Text>
-                            <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
-                            <Rating
-                                type='custom'
-                                ratingImage={ dollarSign }
-                                startingValue={ item.priceRange}
-                                imageSize={20}
-                                readonly={true}
-                                ratingColor= {'#378805'}
-                            />
-                            <View>
-                                <Rating
-                                    type='star'
-                                    ratingCount={5}
-                                    imageSize={20}
-                                    isDisabled = { true }
-                                    startingValue= { RandomNumber }
-                                />
+                        <TouchableOpacity style={GlobalStyles.cardSalons} onPress={() => handleSelectSalon(salonKeys[index])}>
+                            <View style={{flexDirection: 'column', width: '65%'}}>
+                                <Text style={GlobalStyles.name}>{item.name}</Text>
+                                <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
+                            </View>
+                                <View style={{flexDirection:'column'}}>
+                                    <Rating
+                                        style={(GlobalStyles.rating)}
+                                        type='custom'
+                                        ratingImage={ dollarSign }
+                                        startingValue={ item.priceRange}
+                                        imageSize={20}
+                                        readonly={true}
+                                        ratingColor= {'#378805'}
+                                    />
+                                    <Rating
+                                        style={(GlobalStyles.dollarRating)}
+                                        type='star'
+                                        ratingCount={5}
+                                        imageSize={20}
+                                        isDisabled = { true }
+                                        startingValue= { RandomNumber }
+                                    />
                             </View>
                         </TouchableOpacity>
                     </View>
