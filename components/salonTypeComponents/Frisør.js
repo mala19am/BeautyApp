@@ -50,11 +50,14 @@ const Frisør = ({navigation}) => {
             data={salonArray}
             keyExtractor={(item, index) => salonKeys[index]}
             renderItem={({ item, index }) => {
-                return(
-                    <TouchableOpacity style={GlobalStyles.card} onPress={() => handleSelectSalon(salonKeys[index])}>
-                        <Text style={GlobalStyles.salonName}>{item.name}</Text>
-                        <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
-                    </TouchableOpacity>
+                return (
+                    <View>
+                        <TouchableOpacity style={GlobalStyles.card} onPress={() => handleSelectSalon(salonKeys[index])}>
+                            <Text style={GlobalStyles.salonName}>{item.name}</Text>
+                            <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
+                        </TouchableOpacity>
+                    </View>
+
                 )
             }}
         />

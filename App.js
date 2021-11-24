@@ -3,8 +3,6 @@ import { Text, View, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from "./components/HomeScreen";
-import ProfileScreen from "./components/ProfileScreen";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeStackNavigator from "./components/StackNavigators/HomeStackNavigator";
 import StackNavigator from "./components/StackNavigators/StackNavigator";
@@ -15,14 +13,6 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Profile from "./components/ProfileScreen";
 import {ADMINS} from "./const"
-
-import negle from "./components/salonTypeComponents/negle";
-
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 
 

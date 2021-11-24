@@ -3,7 +3,9 @@ import {StyleSheet} from "react-native";
 const GlobalStyles = StyleSheet.create({
     container:{
         flex:1,
-        marginTop:20
+        marginTop:20,
+        borderWidth: 2,
+        borderColor: "red",
     },
     contentList:{
         flex:1,
@@ -21,6 +23,7 @@ const GlobalStyles = StyleSheet.create({
     },
 
     card:{
+        flex: 1,
         alignSelf: 'center',
         marginLeft: 20,
         marginRight: 20,
@@ -29,7 +32,9 @@ const GlobalStyles = StyleSheet.create({
         padding: 10,
         borderRadius:30,
         width: '80%',
-        height: '80%'
+        height: '60%',
+        borderWidth: 2,
+        borderColor: "black"
     },
 
     name:{
@@ -42,7 +47,7 @@ const GlobalStyles = StyleSheet.create({
     salonName:{
         fontSize:18,
         marginLeft: 10,
-        marginTop: 5,
+        marginTop: 15,
         flex:1,
         color:"#D22D2D",
         fontWeight:'bold'
@@ -51,7 +56,7 @@ const GlobalStyles = StyleSheet.create({
         fontSize: 14,
         flex:1,
         color:"#8F1E1E",
-        marginTop: 8,
+        marginTop: 18,
         marginLeft: 10,
     },
     buttonContainer: {
@@ -66,7 +71,7 @@ const GlobalStyles = StyleSheet.create({
         backgroundColor: "#D22D2D"
     },
     buttonText:{
-        fontSize:14,
+        fontSize:13,
         color: "#FFFFFF",
         fontWeight: "600"
     },

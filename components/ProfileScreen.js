@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         marginBottom:20,
         width:250,
         borderRadius:30,
-        backgroundColor: "#D22D2D"
+        backgroundColor: "#D22D2D",
     },
 });
 
