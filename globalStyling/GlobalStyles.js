@@ -2,10 +2,7 @@ import {StyleSheet} from "react-native";
 
 const GlobalStyles = StyleSheet.create({
     container:{
-        flex:1,
-        marginTop:20,
-        borderWidth: 2,
-        borderColor: "red",
+        flex:1
     },
     contentList:{
         flex:1,
@@ -31,10 +28,8 @@ const GlobalStyles = StyleSheet.create({
         backgroundColor:"white",
         padding: 10,
         borderRadius:30,
-        width: '80%',
-        height: '60%',
-        borderWidth: 2,
-        borderColor: "black"
+        width: '90%',
+        height: '60%'
     },
 
     name:{

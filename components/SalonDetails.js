@@ -41,6 +41,9 @@ const SalonDetails = ({route,navigation}) => {
             salon: salon["name"],
             date: selectedDate.toString().slice(0,15)
         }
+        if(booking.date.length === 0) {
+            return Alert.alert('Vælg venligst en dato.')
+        }
 
             firebase
                 .database()

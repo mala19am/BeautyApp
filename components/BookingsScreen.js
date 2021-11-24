@@ -5,12 +5,15 @@ import {useEffect, useState} from "react";
 import firebase from "firebase";
 import { createStackNavigator } from '@react-navigation/stack';
 import GlobalStyles from "../globalStyling/GlobalStyles";
+import { Rating } from "react-native-ratings"
 
 const Stack = createStackNavigator();
 
 
 function BookingScreen({navigation}) {
     const [bookings,setBookings] = useState()
+    let RandomNumber = Math.floor(Math.random() * 5) + 1 ;
+
 
     useEffect(() => {
         if(!bookings) {
@@ -50,6 +53,15 @@ function BookingScreen({navigation}) {
                                     <TouchableOpacity style={GlobalStyles.buttonContainerDelete}>
                                         <Text style={GlobalStyles.buttonText}>Redigér booking</Text>
                                     </TouchableOpacity>
+                                </View>
+                                <View>
+                                    <Rating
+                                        type='star'
+                                        ratingCount={5}
+                                        imageSize={40}
+                                        isDisabled = { true }
+                                        startingValue= { RandomNumber }
+                                    />
                                 </View>
                             </View>
                         )

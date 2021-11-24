@@ -91,7 +91,7 @@ function App() {
       <NavigationContainer>
         <Tab.Navigator screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
-            if (route.name === 'Kategorier') {
+            if (route.name === 'Find') {
               return (
                   <Ionicons
                       name={'earth-outline'}
@@ -99,7 +99,7 @@ function App() {
                       color={color}
                   />
               );
-            } else if (route.name === 'Profile') {
+            } else if (route.name === 'Profil') {
               return (
                   <Ionicons
                       name='person-circle-outline'
@@ -124,8 +124,8 @@ function App() {
                          inactiveTintColor: 'gray',
                        }}
         >
-          <Tab.Screen name="Profile" component={ProfileStackNavigator} />
-          <Tab.Screen name="Kategorier" component={HomeStackNavigator} />
+          <Tab.Screen name="Profil" component={ProfileStackNavigator} />
+          <Tab.Screen name="Find" component={HomeStackNavigator} />
             {
                 ADMINS.includes(firebase.auth().currentUser.email)
                     && <Tab.Screen name="Stack" component={StackNavigator} />
