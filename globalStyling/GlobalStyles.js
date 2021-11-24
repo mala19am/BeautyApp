@@ -110,25 +110,16 @@ const GlobalStyles = StyleSheet.create({
         fontSize: 20,
     },
     containerCreateSalon: {
-        paddingTop:25,
         flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
         height:'100%'
     },
     textCreateSalon: {
+        marginBottom: 10,
         fontSize: 25,
         fontWeight: "bold",
-    },
-    buttonCreateSalon: {
-        marginTop:5,
-        height:45,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom:20,
-        width:250,
-        borderRadius:30,
-        backgroundColor: "#D22D2D"
     },
     buttonContainerDelete: {
         marginLeft: 10,

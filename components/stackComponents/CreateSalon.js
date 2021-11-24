@@ -1,8 +1,11 @@
-import {Button, StyleSheet, Text, View,
-        SafeAreaView, ScrollView, Alert, TextInput} from "react-native";
+import {
+    Button, StyleSheet, Text, View,
+    SafeAreaView, ScrollView, Alert, TextInput, TouchableOpacity
+} from "react-native";
 import * as React from "react";
 import firebase from "firebase";
 import {useEffect, useState} from "react";
+import GlobalStyles from "../../globalStyling/GlobalStyles";
 
 function CreateSalon({ navigation, route}) {
 
@@ -42,14 +45,8 @@ function CreateSalon({ navigation, route}) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Text style={styles.text}>Add salon</Text>
+                <Text style={styles.text}>OPRET SALON</Text>
                 <View style={{display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column'}}>
-                    <View style={{margin: '2%'}} >
-                        <Button title="Go Back" onPress={() => navigation.goBack() } />
-                    </View>
-                    <View style={{margin: '2%'}} >
-                        <Button title="Go To Screen Two" onPress={() => navigation.navigate('ScreenTwo')}  />
-                    </View>
                 </View>
                 {
                     Object.keys(initialState).map((key,index) =>{
@@ -65,7 +62,9 @@ function CreateSalon({ navigation, route}) {
                         )
                     })
                 }
-                <Button title={"Add salon"} onPress={() => handleSave()} />
+                <TouchableOpacity style={GlobalStyles.buttonContainer} onPress={() => handleSave()}>
+                    <Text style={GlobalStyles.buttonText}>Opret salon</Text>
+                </TouchableOpacity>
             </ScrollView>
         </SafeAreaView>
     );
@@ -77,8 +76,6 @@ export default CreateSalon
 //Lokal styling til brug i CreateSalon
 const styles = StyleSheet.create({
     container: {
-        borderColor: 'red',
-        borderWidth: 20,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -86,5 +83,6 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 20,
+        fontWeight: 'bold',
     },
 });

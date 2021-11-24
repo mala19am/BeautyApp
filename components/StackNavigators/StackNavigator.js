@@ -13,22 +13,20 @@ function StackNavigator() {
         <Stack.Navigator
             initialRouteName="Details"
         >
-            <Stack.Screen name="Details" component={CreateScreen}
+            <Stack.Screen name="Admin" component={CreateScreen}
                           options={{
                               headerTitleAlign: 'center',
                               headerTitleStyle: {color: 'white'},
-                              headerStyle: {backgroundColor: '#ba6262'}}
+                              headerStyle: {backgroundColor: '#D22D2D'}}
                           }
             />
-            <Stack.Screen name="ScreenOne" component={CreateSalon} options={{
-                headerTitleStyle: { textAlign: 'right', color: 'white' },
-                headerStyle: {backgroundColor: '#62bab5'}
-            }} />
-            <Stack.Screen name="ScreenTwo" component={ScreenTwo} options={{
-                headerTitleStyle: {color: 'black'},
-                headerStyle: {backgroundColor: '#628bba'}
-            }}
-            />
+            <Stack.Screen name="Opret salon" component={CreateSalon}
+                          options={{
+                              headerTitleAlign: 'center',
+                              headerTitleStyle: {color: 'white'},
+                              headerStyle: {backgroundColor: '#D22D2D'}}
+                          }
+                />
         </Stack.Navigator>
     )
 }

@@ -1,4 +1,4 @@
-import {Button, StyleSheet, Text, View} from "react-native";
+import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import * as React from "react";
 import GlobalStyles from "../globalStyling/GlobalStyles";
 
@@ -23,9 +23,9 @@ function CreateScreen({navigation}) {
     return (
         <View style={GlobalStyles.containerCreateSalon}>
             <Text style={GlobalStyles.textCreateSalon}>Opret en ny salon</Text>
-            <Button style={GlobalStyles.buttonCreateSalon} title="Tryk for at oprette en salon" onPress={() => navController(navigation, 'ScreenOne')}>
-                    <Text style={GlobalStyles.buttonText}>Se bookinger</Text>
-            </Button>
+            <TouchableOpacity style={GlobalStyles.buttonContainer} onPress={() => navController(navigation, 'Opret salon')}>
+                <Text style={GlobalStyles.buttonText}>Opret en ny salon</Text>
+            </TouchableOpacity>
         </View>
     );
 }

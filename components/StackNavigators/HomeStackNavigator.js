@@ -25,7 +25,7 @@ function HomeStackNavigator() {
                           options={{
                               headerTitleAlign: 'center',
                               headerTitleStyle: {color: 'white'},
-                              headerStyle: {backgroundColor: '#ba6262'}}
+                              headerStyle: {backgroundColor: '#D22D2D'}}
                           }
             />
             <Stack.Screen name="Negle" component={negle}/>
