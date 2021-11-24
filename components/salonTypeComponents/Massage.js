@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import GlobalStyles from "../../globalStyling/GlobalStyles"
 import {Rating} from "react-native-ratings";
 
+const dollarSign = require ('../../image/dollarSignFinal.png')
 
 function getRandomNumber() {
     return Math.floor(Math.random()* 5) + 1;
