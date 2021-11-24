@@ -53,7 +53,7 @@ const Frisør = ({navigation}) => {
                 return (
                     <View>
                         <TouchableOpacity style={GlobalStyles.card} onPress={() => handleSelectSalon(salonKeys[index])}>
-                            <Text style={GlobalStyles.salonName}>{item.name}</Text>
+                            <Text style={GlobalStyles.name}>{item.name}</Text>
                             <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
                         </TouchableOpacity>
                     </View>

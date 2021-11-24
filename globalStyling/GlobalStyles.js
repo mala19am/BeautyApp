@@ -35,14 +35,13 @@ const GlobalStyles = StyleSheet.create({
     name:{
         fontSize:24,
         flex:1,
-        alignSelf:'center',
+        marginLeft: 10,
         color:"#D22D2D",
         fontWeight:'bold'
     },
     salonName:{
         fontSize:18,
         marginLeft: 10,
-        marginTop: 15,
         flex:1,
         color:"#D22D2D",
         fontWeight:'bold'
@@ -51,8 +50,9 @@ const GlobalStyles = StyleSheet.create({
         fontSize: 14,
         flex:1,
         color:"#8F1E1E",
-        marginTop: 18,
+        marginTop: 10,
         marginLeft: 10,
+        marginBottom: 10,
     },
     buttonContainer: {
         marginTop:5,

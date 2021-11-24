@@ -53,7 +53,7 @@ const Negle = ({navigation}) => {
                 return(
                     <TouchableOpacity style={GlobalStyles.card} onPress={() => handleSelectSalon(salonKeys[index])}>
                         <Text style={GlobalStyles.name}>{item.name}</Text>
-                        <Text style={GlobalStyles.address}>{item.address}</Text>
+                        <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
                     </TouchableOpacity>
                 )
             }}
