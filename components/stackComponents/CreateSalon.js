@@ -9,7 +9,8 @@ function CreateSalon({ navigation, route}) {
     const initialState = {
         name: '',
         address: '',
-        type: ''
+        type: '',
+        priceRange: 0
     }
 
     const [newSalon,setNewSalon] = useState(initialState);
@@ -19,7 +20,7 @@ function CreateSalon({ navigation, route}) {
     }
 
     const handleSave = () => {
-        const { name, address, type} = newSalon;
+        const { name, address, type, priceRange} = newSalon;
 
         if(name.length === 0 || address.length === 0 || type.length === 0){
             return Alert.alert('Udfyld venligst alle felter.')
@@ -29,7 +30,7 @@ function CreateSalon({ navigation, route}) {
             firebase
                 .database()
                 .ref('/BeautyMMJR/')
-                .push({name, address, type});
+                .push({name, address, type, priceRange});
             Alert.alert('Saved');
             setNewSalon(initialState)
         } catch (error) {

@@ -3,6 +3,9 @@ import * as React from "react";
 import firebase from "firebase";
 import {useEffect, useState} from "react";
 import GlobalStyles from "../../globalStyling/GlobalStyles"
+import { Rating } from 'react-native-ratings'
+
+const dollarSign = require ('../../image/dollar-symbol.png')
 
 //HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
 const Negle = ({navigation}) => {
@@ -51,10 +54,19 @@ const Negle = ({navigation}) => {
             keyExtractor={(item, index) => salonKeys[index]}
             renderItem={({ item, index }) => {
                 return(
-                    <TouchableOpacity style={GlobalStyles.card} onPress={() => handleSelectSalon(salonKeys[index])}>
-                        <Text style={GlobalStyles.name}>{item.name}</Text>
-                        <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
-                    </TouchableOpacity>
+                    <View>
+                        <TouchableOpacity style={GlobalStyles.card} onPress={() => handleSelectSalon(salonKeys[index])}>
+                            <Text style={GlobalStyles.name}>{item.name}</Text>
+                            <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
+                            <Rating
+                                type='custom'
+                                ratingImage={ dollarSign }
+                                ratingCount={3}
+                                imageSize={30}
+                                readonly={true}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 )
             }}
         />
