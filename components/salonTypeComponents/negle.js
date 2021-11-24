@@ -7,7 +7,10 @@ import { Rating } from 'react-native-ratings'
 
 const dollarSign = require ('../../image/dollarSignFinal.png')
 
-let RandomNumber = Math.floor(Math.random() * 5) + 1 ;
+function getRandomNumber() {
+    let RandomNumber = Math.floor(Math.random()* 5) + 1;
+    return RandomNumber;
+}
 
 //HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
 const Negle = ({navigation}) => {
@@ -77,8 +80,8 @@ const Negle = ({navigation}) => {
                                         type='star'
                                         ratingCount={5}
                                         imageSize={20}
-                                        isDisabled = { true }
-                                        startingValue= { RandomNumber }
+                                        readonly= { true }
+                                        startingValue= { getRandomNumber() }
                                     />
                             </View>
                         </TouchableOpacity>
