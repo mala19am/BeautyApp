@@ -3,6 +3,12 @@ import * as React from "react";
 import firebase from "firebase";
 import {useEffect, useState} from "react";
 import GlobalStyles from "../../globalStyling/GlobalStyles"
+import {Rating} from "react-native-ratings";
+
+
+function getRandomNumber() {
+    return Math.floor(Math.random()* 5) + 1;
+}
 
 //HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
 const Frisør = ({navigation}) => {
@@ -50,14 +56,34 @@ const Frisør = ({navigation}) => {
             data={salonArray}
             keyExtractor={(item, index) => salonKeys[index]}
             renderItem={({ item, index }) => {
-                return (
+                return(
                     <View>
-                        <TouchableOpacity style={GlobalStyles.card} onPress={() => handleSelectSalon(salonKeys[index])}>
-                            <Text style={GlobalStyles.name}>{item.name}</Text>
-                            <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
+                        <TouchableOpacity style={GlobalStyles.cardSalons} onPress={() => handleSelectSalon(salonKeys[index])}>
+                            <View style={{flexDirection: 'column', width: '65%'}}>
+                                <Text style={GlobalStyles.name}>{item.name}</Text>
+                                <Text style={GlobalStyles.address}>Adresse: {item.address}</Text>
+                            </View>
+                            <View style={{flexDirection:'column'}}>
+                                <Rating
+                                    style={(GlobalStyles.rating)}
+                                    type='custom'
+                                    ratingImage={ dollarSign }
+                                    startingValue={ item.priceRange}
+                                    imageSize={20}
+                                    readonly={true}
+                                    ratingColor= {'#378805'}
+                                />
+                                <Rating
+                                    style={(GlobalStyles.dollarRating)}
+                                    type='star'
+                                    ratingCount={5}
+                                    imageSize={20}
+                                    readonly= { true }
+                                    startingValue= { getRandomNumber() }
+                                />
+                            </View>
                         </TouchableOpacity>
                     </View>
-
                 )
             }}
         />

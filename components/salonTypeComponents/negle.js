@@ -8,8 +8,7 @@ import { Rating } from 'react-native-ratings'
 const dollarSign = require ('../../image/dollarSignFinal.png')
 
 function getRandomNumber() {
-    let RandomNumber = Math.floor(Math.random()* 5) + 1;
-    return RandomNumber;
+    return Math.floor(Math.random()* 5) + 1;
 }
 
 //HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
