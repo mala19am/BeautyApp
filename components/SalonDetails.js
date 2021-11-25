@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import {useEffect, useState} from "react";
 import GlobalStyles from "../globalStyling/GlobalStyles";
 import CalendarPicker from 'react-native-calendar-picker';
+import moment from "moment";
 //import Rating from 'react-native-ratings';
 
 
@@ -69,9 +70,10 @@ const SalonDetails = ({route,navigation}) => {
             <SafeAreaView style={styles.container}>
                 <CalendarPicker
                     onDateChange={ onDateChange}
+                    restrictMonthNavigation={ true }
                 />
                 <View>
-                    <Text>{selectedDate.toString()}</Text>
+                    <Text>{moment(selectedDate).format('DD/MM/YYYY')}</Text>
                 </View>
 
                 <View style={styles.bodyContent}>

@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import firebase from "firebase";
 
-const navController = (navigation, route) =>{
-    navigation.navigate(route)
+const navController = (navigation, route, param) =>{
+    navigation.navigate(route, {passing: param})
 }
 
 const ProfileScreen = ({navigation}) => {
@@ -37,8 +37,11 @@ const ProfileScreen = ({navigation}) => {
                     <View style={styles.bodyContent}>
                         <Text style={styles.name}>Magnus</Text>
 
-                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navController(navigation, "BookingScreen")}>
+                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navController(navigation, "BookingScreen", "future")}>
                             <Text style={styles.buttonText}>Se bookinger</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navController(navigation, "BookingScreen", "past")}>
+                            <Text style={styles.buttonText}>Tidligere bookinger</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonContainer} onPress={() => handleLogOut()}>
                             <Text style={styles.buttonText}>Log ud</Text>
