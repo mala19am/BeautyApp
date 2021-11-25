@@ -10,8 +10,7 @@ import { Rating } from "react-native-ratings"
 const Stack = createStackNavigator();
 
 function getRandomNumber() {
-    let RandomNumber = Math.floor(Math.random()* 5) + 1;
-    return RandomNumber;
+    return Math.floor(Math.random()* 5) + 1;
 }
 
 
@@ -19,6 +18,12 @@ function getRandomNumber() {
 function BookingScreen({navigation}) {
     const [bookings,setBookings] = useState()
 
+    const deleteBooking = (id) => {
+        console.log(id);
+        firebase
+            .database()
+            .ref('/Bookings').child(id).remove().then(r => Alert.alert("Booking slettet"))
+    }
 
     useEffect(() => {
         if(!bookings) {
@@ -36,13 +41,15 @@ function BookingScreen({navigation}) {
         return <Text>Du har ingen bookings</Text>
     }
 
-    const bookingArray = Object.values(bookings)
+    const bookingArray = Object.values(bookings);
+    const bookingKeys = Object.keys(bookings);
 
     return (
             <View style={GlobalStyles.container}>
                 <FlatList
                     data={bookingArray}
-                    renderItem={({ item }) => {
+                    keyExtractor={(item, index) => bookingKeys[index]}
+                    renderItem={({ item, index }) => {
                         return(
                             <View style={GlobalStyles.cardBooking}>
                                 <TouchableOpacity>
@@ -52,7 +59,7 @@ function BookingScreen({navigation}) {
                                     <Text style={GlobalStyles.address}>{item.salon}</Text>
                                 </TouchableOpacity>
                                 <View style={{width: '100%', height:50, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                                    <TouchableOpacity style={GlobalStyles.buttonContainerDelete}>
+                                    <TouchableOpacity style={GlobalStyles.buttonContainerDelete} onPress={() => deleteBooking(bookingKeys[index])}>
                                         <Text style={GlobalStyles.buttonText}>Slet booking</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={GlobalStyles.buttonContainerDelete}>

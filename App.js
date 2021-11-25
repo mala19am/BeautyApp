@@ -7,10 +7,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeStackNavigator from "./components/StackNavigators/HomeStackNavigator";
 import StackNavigator from "./components/StackNavigators/StackNavigator";
 import ProfileStackNavigator from "./components/StackNavigators/ProfileStackNavigator";
+import SpotlightStackNavigator from "./components/StackNavigators/SpotlightStackNavigator";
 import firebase from "firebase";
 import {createStackNavigator} from "@react-navigation/stack";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
+import SpotlightScreen from "./components/SpotlightScreen"
 import Profile from "./components/ProfileScreen";
 import {ADMINS} from "./const"
 
@@ -107,7 +109,15 @@ function App() {
                       color={color}
                   />
               );
-            }
+            } else if (route.name === 'Spotlight') {
+            return (
+            <Ionicons
+            name='flashlight-outline'
+            size={size}
+            color={color}
+            />
+            );
+        }
             else{
               return (
                   <Ionicons
@@ -124,6 +134,7 @@ function App() {
                          inactiveTintColor: 'gray',
                        }}
         >
+          <Tab.Screen name="Spotlight" component={SpotlightStackNavigator}/>
           <Tab.Screen name="Profil" component={ProfileStackNavigator} />
           <Tab.Screen name="Find" component={HomeStackNavigator} />
             {
