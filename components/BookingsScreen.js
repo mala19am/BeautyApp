@@ -21,7 +21,7 @@ function todayDate(bookingDate) {
 
 
 function BookingScreen({navigation, route}) {
-    const [bookings, setBookings] = useState()
+    const [bookings, setBookings] = useState();
 
     const deleteBooking = (id) => {
         console.log(id);
@@ -101,7 +101,7 @@ function BookingScreen({navigation, route}) {
                 <FlatList
                     data={bookingArray}
                     keyExtractor={(item, index) => bookingKeys[index]}
-                    renderItem={({item, index}) => {
+                    renderItem={({item}) => {
                         if (todayDate(item.date) === false) {
                             return (
                                 <View style={GlobalStyles.cardBooking}>

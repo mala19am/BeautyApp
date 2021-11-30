@@ -3,18 +3,58 @@ import {
     StyleSheet,
     Text,
     Button,
+    ListRenderItem,
     View,
     Image,
-    TouchableOpacity
+    SafeAreaView,
+    TouchableOpacity, Alert, FlatList
 } from 'react-native';
 import firebase from "firebase";
+import GlobalStyles from "../globalStyling/GlobalStyles";
+import {Rating} from "react-native-ratings";
+import moment from "moment";
 
 const navController = (navigation, route, param) =>{
     navigation.navigate(route, {passing: param})
 }
 
+function todayBookingDate(bookingDate) {
+    const today = new Date;
+    const modToday = moment(today).format('YYYY/MM/DD');
+    const modBookingDate = moment(bookingDate).format('YYYY/MM/DD');
+    console.log(modBookingDate === modToday);
+    return modBookingDate === modToday;
+}
+
 const ProfileScreen = ({navigation}) => {
 
+    const [bookings, setBookings] = useState()
+
+    const deleteBooking = (id) => {
+        console.log(id);
+        firebase
+            .database()
+            .ref('/Bookings').child(id).remove().then(r => Alert.alert("Booking slettet"))
+    }
+
+    useEffect(() => {
+        if (!bookings) {
+            firebase
+                .database()
+                .ref('/Bookings')
+                .orderByChild("mail").equalTo(firebase.auth().currentUser.email)
+                .on('value', snapshot => {
+                    setBookings(snapshot.val())
+                });
+        }
+    }, []);
+
+    if (!bookings) {
+        return <Text>Loading</Text>
+    }
+
+    const bookingArray = Object.values(bookings);
+    const bookingKeys = Object.keys(bookings);
 
     //handleLogout håndterer log ud af en aktiv bruger.
     //Metoden er en prædefineret metode, som firebase stiller tilrådighed
@@ -35,14 +75,60 @@ const ProfileScreen = ({navigation}) => {
                 <Image style={styles.picture} source={require("../image/profilePicture.jpg")}/>
                 <View style={styles.body}>
                     <View style={styles.bodyContent}>
-                        <Text style={styles.name}>Magnus</Text>
+                        <Text style={styles.name}> { firebase.auth().currentUser.email } </Text>
+                        <View style={styles.bookingButtons}>
+                            <TouchableOpacity style={styles.buttonContainer} onPress={() => navController(navigation, "BookingScreen", "future")}>
+                                <Text style={styles.buttonText}>Se bookinger</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.buttonContainer} onPress={() => navController(navigation, "BookingScreen", "past")}>
+                                <Text style={styles.buttonText}>Tidligere bookinger</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={GlobalStyles.textCreateSalon}>Dagens bookings:</Text>
+                        <View style={GlobalStyles.container}>
+                            <FlatList
+                                data={bookingArray}
+                                keyExtractor={(item, index) => bookingKeys[index]}
+                                renderItem={({item, index}) => {
+                                    if (todayBookingDate(item.date)) {
+                                        return (
+                                            <View style={GlobalStyles.cardBooking}>
+                                                <TouchableOpacity>
+                                                    <Text style={GlobalStyles.salonName}>Dato:</Text>
+                                                    <Text style={GlobalStyles.address}>{item.date}</Text>
+                                                    <Text style={GlobalStyles.salonName}>Hos:</Text>
+                                                    <Text style={GlobalStyles.address}>{item.salon}</Text>
+                                                </TouchableOpacity>
+                                                <View style={{
+                                                    width: '100%',
+                                                    height: 50,
+                                                    flexDirection: 'row',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center'
+                                                }}>
+                                                    <TouchableOpacity style={GlobalStyles.buttonContainerDelete}
+                                                                      onPress={() => deleteBooking(bookingKeys[index])}>
+                                                        <Text style={GlobalStyles.buttonText}>Slet booking</Text>
+                                                    </TouchableOpacity>
+                                                    <TouchableOpacity style={GlobalStyles.buttonContainerDelete}>
+                                                        <Text style={GlobalStyles.buttonText}>Redigér booking</Text>
+                                                    </TouchableOpacity>
+                                                </View>
+                                                <View>
+                                                    <Rating
+                                                        type='star'
+                                                        ratingCount={5}
+                                                        imageSize={30}
+                                                        readonly={true}
+                                                    />
+                                                </View>
+                                            </View>
+                                        )
+                                    }
+                                }}
+                            />
+                        </View>
 
-                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navController(navigation, "BookingScreen", "future")}>
-                            <Text style={styles.buttonText}>Se bookinger</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navController(navigation, "BookingScreen", "past")}>
-                            <Text style={styles.buttonText}>Tidligere bookinger</Text>
-                        </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonContainer} onPress={() => handleLogOut()}>
                             <Text style={styles.buttonText}>Log ud</Text>
                         </TouchableOpacity>
@@ -55,7 +141,13 @@ const ProfileScreen = ({navigation}) => {
 const styles = StyleSheet.create({
     header:{
         backgroundColor: "#D22D2D",
-        height:200,
+        height:150,
+    },
+    testtest:{
+        borderWidth: 5,
+        borderColor: "black",
+        flex: 1,
+        height: 200
     },
     picture: {
         width: 130,
@@ -66,7 +158,7 @@ const styles = StyleSheet.create({
         marginBottom:10,
         alignSelf:'center',
         position: 'absolute',
-        marginTop:130
+        marginTop:80
     },
     name:{
         fontSize:22,
@@ -102,12 +194,18 @@ const styles = StyleSheet.create({
         height:45,
         flexDirection: 'row',
         justifyContent: 'center',
+        marginHorizontal: 10,
         alignItems: 'center',
         marginBottom:20,
-        width:250,
+        width:150,
         borderRadius:30,
         backgroundColor: "#D22D2D",
     },
+    bookingButtons: {
+        flexDirection: "row",
+        flex: 1,
+        marginBottom: 80,
+    }
 });
 
 export default ProfileScreen
