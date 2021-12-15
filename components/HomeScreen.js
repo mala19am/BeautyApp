@@ -1,19 +1,18 @@
 import {StyleSheet, Text, View, FlatList, TouchableOpacity,
         TouchableHighlight, Button, Image, Dimensions, Alert, ScrollView} from "react-native";
 import * as React from "react";
-import firebase from "firebase";
-import {useEffect, useState} from "react";
-
-import negle from "./salonTypeComponents/negle";
 import {SALONTYPES} from "../const";
-import {NegleImage} from "../image/Negle.png"
 
-
+/*
+* Metode til at navigere på baggrund af de argumenter, som der sendes med i metode
+* Metodens logik udnytter den prædefinerede metode, 'navigate', som navigere ind til det den komponent,
+* der hænger sammen med det overførte rutenavn
+ */
 const navController = (navigation, route) =>{
     navigation.navigate(route)
 }
 
-//HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
+//HomeScreen komponenten laver en flatlist som indeholder de 5 typer saloner, som hentes fra SALONTYPES.
 function HomeScreen({navigation}) {
     return (
         <View style={styles.container}>

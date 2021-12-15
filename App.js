@@ -12,8 +12,6 @@ import firebase from "firebase";
 import {createStackNavigator} from "@react-navigation/stack";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
-import SpotlightScreen from "./components/SpotlightScreen"
-import Profile from "./components/ProfileScreen";
 import {ADMINS} from "./const"
 
 
@@ -30,9 +28,7 @@ function App() {
     //Her oprettes bruger state variblen
     const [user, setUser] = useState({ loggedIn: false });
 
-    const Stack = createStackNavigator();
-
-// Your web app's Firebase configuration
+// Firebase configuration
     const firebaseConfig = {
         apiKey: "AIzaSyC12qwhPX4YJWMOuNfZ3vub9HfV7OGYaPQ",
         authDomain: "beautymmjr.firebaseapp.com",
@@ -88,7 +84,8 @@ function App() {
         )
     }
 
-
+    //Returneres hvis brugeren er logget ind
+    //Viser en tab navigator for brugeren, så vedkommende kan navigere rundt.
   return user.loggedIn ?
       <NavigationContainer>
         <Tab.Navigator screenOptions={({ route }) => ({
@@ -121,7 +118,7 @@ function App() {
             else{
               return (
                   <Ionicons
-                      name='md-list-outline'
+                      name='add-circle-outline'
                       size={size}
                       color={color}
                   />
@@ -138,8 +135,9 @@ function App() {
           <Tab.Screen name="Profil" component={ProfileStackNavigator} />
           <Tab.Screen name="Find" component={HomeStackNavigator} />
             {
+                // Hvis brugeren er en admin, bliver admin-siden vist i tab-navigatoren
                 ADMINS.includes(firebase.auth().currentUser.email)
-                    && <Tab.Screen name="Stack" component={StackNavigator} />
+                    && <Tab.Screen name="Admin" component={StackNavigator} />
             }
         </Tab.Navigator>
       </NavigationContainer> : <GuestPage/> ;

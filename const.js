@@ -16,5 +16,5 @@ export const ADMINS = [
     "meinert@gmail.com",
     "magnus_sl@live.dk",
     "ips@ips.dk",
-    "Admin@mail.dk"
+    "admin@mail.dk"
 ];

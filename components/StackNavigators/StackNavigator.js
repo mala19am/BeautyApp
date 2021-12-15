@@ -1,6 +1,5 @@
 import * as React from "react";
 import CreateSalon from "../stackComponents/CreateSalon";
-import ScreenTwo from "../stackComponents/ScreenTwo";
 import CreateScreen from "../CreateScreen";
 import { createStackNavigator } from '@react-navigation/stack';
 

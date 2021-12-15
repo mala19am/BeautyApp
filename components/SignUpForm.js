@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Button,Text,
     View,
     TextInput,
-    ActivityIndicator,
     StyleSheet,
 } from 'react-native';
 import firebase from 'firebase';

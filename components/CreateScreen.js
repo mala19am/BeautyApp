@@ -1,4 +1,4 @@
-import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Text, TouchableOpacity, View} from "react-native";
 import * as React from "react";
 import GlobalStyles from "../globalStyling/GlobalStyles";
 
@@ -13,12 +13,7 @@ const navController = (navigation, route) =>{
 }
 
 
-/*
- * CreateScreen tager 'navigation' med som argument. navigation er en automatisk prædefineret prop, der kan refereres til i alle screen komponenter.
- *Se dokumentationen for mere info: https://reactnavigation.org/docs/navigation-prop/
- *
- *Derudover styles CreateScreen, som indeholder omfatter to button komponenter, der benytters til at aktivere vores navController metode
- */
+// Metoden sender en videre til når man trykker på knappen 'Opret en ny salon'
 function CreateScreen({navigation}) {
     return (
         <View style={GlobalStyles.containerCreateSalon}>

@@ -9,6 +9,7 @@ import GlobalStyles from "../../globalStyling/GlobalStyles";
 
 function CreateSalon({ navigation, route}) {
 
+    // Her oprettes et tomt objekt til initialState
     const initialState = {
         name: '',
         address: '',
@@ -16,12 +17,16 @@ function CreateSalon({ navigation, route}) {
         priceRange: 0
     }
 
+    // Instantiering af state-variabler til oprettelse af en ny salon
     const [newSalon,setNewSalon] = useState(initialState);
 
+    // Metode som sætte nye saloners attributter
     const changeTextInput = (name,event) => {
         setNewSalon({...newSalon, [name]: event})
     }
 
+    // Metode som gemmer den komplette nye salon
+    // Den tjekker først om alle felter er udfyldt og hvis gjort korrekt, så pusher den til databasen.
     const handleSave = () => {
         const { name, address, type, priceRange} = newSalon;
 
@@ -69,7 +74,7 @@ function CreateSalon({ navigation, route}) {
         </SafeAreaView>
     );
 }
-//Eksport af Screen således den kan importeres- og bruges i andres komponenter
+
 export default CreateSalon
 
 

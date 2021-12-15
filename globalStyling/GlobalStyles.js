@@ -16,7 +16,7 @@ const GlobalStyles = StyleSheet.create({
         height:90,
         borderRadius:45,
         borderWidth:2,
-        borderColor:"#ebf0f7"
+        borderColor:"#ebf0f7",
     },
     cardSalons:{
         flex: 1,
@@ -42,6 +42,16 @@ const GlobalStyles = StyleSheet.create({
         borderRadius:30,
         width: '90%',
         height: '60%',
+    },
+    header:{
+        padding:30,
+        alignItems: 'center',
+        backgroundColor: "#D22D2D",
+    },
+    headerTitle:{
+        fontSize:30,
+        color:"#FFFFFF",
+        marginTop:10,
     },
     name:{
         fontSize:24,
@@ -86,10 +96,44 @@ const GlobalStyles = StyleSheet.create({
         borderRadius:30,
         backgroundColor: "#D22D2D"
     },
+    buttonContainer2: {
+        marginTop:10,
+        height:45,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginHorizontal: 10,
+        alignItems: 'center',
+        marginBottom:20,
+        width:150,
+        borderRadius:30,
+        backgroundColor: "#D22D2D",
+    },
+    mobilePayButton: {
+        marginTop:5,
+        height:45,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom:20,
+        width:250,
+        borderRadius:30,
+        backgroundColor: "#FFFFFF"
+    },
     buttonText:{
         fontSize:13,
         color: "#FFFFFF",
         fontWeight: "600"
+    },
+    buttonText2:{
+        fontSize:14,
+        color: "#FFFFFF",
+        fontWeight: "600"
+    },
+    bodyContent: {
+        flex: 1,
+        alignItems: 'center',
+        padding:10,
+        marginTop:5,
     },
     row: {
         alignItems: 'center',
@@ -132,6 +176,18 @@ const GlobalStyles = StyleSheet.create({
         width:100,
         borderRadius:30,
         backgroundColor: "#D22D2D"
+    },
+    postContent: {
+        flex: 1,
+        padding:30,
+    },
+    postTitle:{
+        fontSize:26,
+        fontWeight:'600',
+    },
+    postDescription:{
+        fontSize:16,
+        marginTop:10,
     },
 });
 

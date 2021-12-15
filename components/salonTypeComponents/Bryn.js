@@ -5,16 +5,20 @@ import {useEffect, useState} from "react";
 import GlobalStyles from "../../globalStyling/GlobalStyles"
 import {Rating} from "react-native-ratings";
 
+// Henter billede til prisangivning
 const dollarSign = require ('../../image/dollarSignFinal.png')
 
+// En funktion som laver et tilfældigt nummer mellem 1 og 5.
+// Skal bruges til rating
 function getRandomNumber() {
     return Math.floor(Math.random()* 5) + 1;
 }
 
-//HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
+
 const Bryn = ({navigation}) => {
     const [salons,setSalons] = useState()
 
+    // Henter alle saloner med 'Bryn' som type.
     useEffect(() => {
         if(!salons) {
             firebase
@@ -27,31 +31,24 @@ const Bryn = ({navigation}) => {
         }
     },[]);
 
+    // Hvis der ikke er nogle saloner returnerer den en text.
     if (!salons) {
         return <Text>Intet at vise...</Text>
     }
 
+    // Her søger vi direkte i vores array af saloner og finder salon objektet som matcher id'et vi har tilsendt
+    // Id'et bliver sendt med som en parameter
     const handleSelectSalon = id => {
-        /*Her søger vi direkte i vores array af biler og finder bil objektet som matcher idet vi har tilsendt*/
-        const salon = Object.entries(salons).find( salon => salon[0] === id /*id*/)
+        const salon = Object.entries(salons).find( salon => salon[0] === id)
         navigation.navigate('SalonDetails', { salon });
     };
 
+    // Opretter variabler udfra salons objekterne
     const salonArray = Object.values(salons);
     const salonKeys = Object.keys(salons);
 
-    function salonTypeSelector(type) {
-        let data = [];
-        for(let i = 0, l = salonArray.length; i < l; i++){
 
-            if(salonArray[i].type === type){
-                data.push(salonArray[i]);
-            }
-        }
-        console.log(data)
-        return data;
-    }
-
+    // Opretter en flatlist og viser de enkelte saloner
     return (
         <FlatList
             data={salonArray}
@@ -70,6 +67,7 @@ const Bryn = ({navigation}) => {
                                     type='custom'
                                     ratingImage={ dollarSign }
                                     startingValue={ item.priceRange}
+                                    ratingCount={3}
                                     imageSize={20}
                                     readonly={true}
                                     ratingColor= {'#378805'}
@@ -92,18 +90,3 @@ const Bryn = ({navigation}) => {
 }
 
 export default Bryn
-
-//Lokal styling til brug i HomeScreen
-const styles = StyleSheet.create({
-    container: {
-        borderColor: 'red',
-        borderWidth: 20,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-    },
-    text: {
-        fontSize: 20,
-    },
-});
