@@ -34,6 +34,7 @@ const ProfileScreen = ({navigation}) => {
     // Instantiering af state-variabler til bookings
     const [bookings, setBookings] = useState()
 
+    // Metode som sletter bookings fra databasen ved at lede på id.
     const deleteBooking = (id) => {
         firebase
             .database()

@@ -48,16 +48,16 @@ function CreateSalon({ navigation, route}) {
 
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={GlobalStyles.container}>
             <ScrollView>
-                <Text style={styles.text}>OPRET SALON</Text>
+                <Text style={GlobalStyles.text}>OPRET SALON</Text>
                 <View style={{display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column'}}>
                 </View>
                 {
                     Object.keys(initialState).map((key,index) =>{
                         return(
-                            <View style={styles.row} key={index}>
-                                <Text style={styles.label}>{key}</Text>
+                            <View style={GlobalStyles.row} key={index}>
+                                <Text style={GlobalStyles.label}>{key}</Text>
                                 <TextInput
                                     value={newSalon[key]}
                                     onChangeText={(event) => changeTextInput(key,event)}
