@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         margin: 10,
         padding: 10,
+
     },
     header: {
         fontSize: 40,
@@ -85,7 +86,8 @@ const styles = StyleSheet.create({
         marginBottom:20,
         width:250,
         borderRadius:30,
-        backgroundColor: "#D22D2D"
+        backgroundColor: '#D22D2D',
+        color: '#D22D2D',
     }
 });
 
